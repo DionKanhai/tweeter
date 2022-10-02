@@ -1,0 +1,17 @@
+
+nav {
+  height: 120px;
+  width: 100vw;
+  background-color: #4056A1;
+  color: #FFFFFF;
+  padding: 1.5em;
+  position: fixed;
+}
+
+nav > span {
+  font-family: 'Bungee';
+}
+
+nav > i {
+  color: red
+}

@@ -1,0 +1,18 @@
+header {
+  height: 650px;
+  width: 100%;
+  background-color: #0049a3;
+  background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png");
+  display: flex;
+  flex-direction: column;
+}
+
+.aligner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aligner-item {
+  max-width: 50%;
+}
