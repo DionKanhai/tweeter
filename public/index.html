@@ -1,80 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Tweeter - Home Page</title>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<head>
+  <!-- Meta Information -->
+  <title>Tweeter - Home Page</title>
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/client.js"></script>
-    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-  </head>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,600;1,300;1,600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <body>
-    <!-- Top nav bar (fixed) -->
-    <nav>
-      <span>Tweeter</span>
-      <i class="fa-solid fa-angles-down" style="float: right"></i>
-      <span style="float: right"> Write a new tweet</span>
-    </nav>
-    <!-- div with an image and name -->
-    <header class="aligner-and-background-style">
-        <div class="aligner-item">
-          <img src="/images/profile-hex.png">
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/client.js"></script>
+  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+</head>
+
+<body>
+  <!-- Top nav bar (fixed) -->
+  <nav>
+    <span>Tweeter</span>
+    <i class="fa-solid fa-angles-down" style="float: right"></i>
+    <span style="float: right"> Write a new tweet</span>
+  </nav>
+  <!-- div with an image and name -->
+  <header class="aligner-and-background-style">
+    <div class="aligner-item">
+      <img src="/images/profile-hex.png">
+    </div>
+    <br>
+    <div>
+      <h2>Dion</h2>
+    </div>
+  </header>
+
+  <!-- Page-specific (main) content here -->
+  <main class="container">
+    <section class="new-tweet">
+      <h2>Compose Tweet</h2>
+      <form method="POST" action="/tweets/">
+        <label for="tweet-text">What are you humming about?</label>
+        <textarea name="text" id="tweet-text"></textarea>
+        <div class="count-and-btn">
+          <button class="tweet-btn" type="submit">Tweet</button>
+          <output name="counter" class="counter" for="tweet-text">140</output>
         </div>
-        <br>
-        <div>
-            <h2>Dion</h2>
-        </div>
-    </header>
-    
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-     <section class="new-tweet">
-        <h2>Compose Tweet</h2>
-        <form method="POST" action="/tweets/">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
-          <div class="count-and-btn">
-            <button class="tweet-btn" type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-        <section class="new-tweets-created">
-          <article class="article-tweet">
-            <header class="username-and-icon">
-              <text>User Icon and Name</text>
-              <text>user@</text>
-            </header>
-            <text class="display-tweet">Area for the users tweets</text>
-            <footer class="date-stamp-and-flag">I am the footer
-              <span>
-                <i class="fa-solid fa-flag"></i>
-                <i class="fa-solid fa-retweet"></i>
-                <i class="fa-solid fa-heart"></i>
-              </span>
-            </footer>
-          </article>
-        </section>
-     </section>
-    </main>
-  </body>
+      </form>
+      <section>
+        <article class="article-tweet">
+          <header class="username-and-tweeterAt">
+            <span class="image-username">
+              <img class="image-for-user"
+                src="/images/pngtree-cute-face-cartoon-expression-pack-picture-surprise-png-image_5542157.jpeg">
+              <text>UserName</text>
+            </span>
+            <text>user@</text>
+          </header>
+          <text class="display-tweet">Area for the users tweets</text>
+          <footer class="date-stamp-and-flag">I am the footer
+            <span>
+              <i class="fa-solid fa-flag"></i>
+              <i class="fa-solid fa-retweet"></i>
+              <i class="fa-solid fa-heart"></i>
+            </span>
+          </footer>
+      </section>
+    </section>
+  </main>
+</body>
+
 </html>

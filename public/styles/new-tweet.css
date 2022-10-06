@@ -24,25 +24,38 @@
   color: red;
 }
 
-.new-tweets-created {
-  border: 4px solid black;
-  height: 200px;
-}
+/* below styles apply to new tweet boxes*/
+
 
 .article-tweet {
   display: flex;
   flex-direction: column;
   margin: 20px;
+  border: 4px solid black;
+  height: 220px;
+  padding: 10px;
 }
 
-.username-and-icon {
+.article-tweet:hover {
+ box-shadow: 10px 10px 10px rgba(10, 10, 141, 0.5);
+}
+
+.username-and-tweeterAt {
   display: flex;
   justify-content: space-between;
-  
+}
+
+.image-for-user {
+  width: 50px;
+}
+
+.image-username {
+  display: flex;
+  align-items: center;
 }
 
 .display-tweet {
-  height: 100px;
+  height: 110px;
   display: flex;
   align-items: center;
   width: 100%
@@ -56,5 +69,13 @@
   justify-content: space-between;
   border-top: 2px solid black;
   padding-top: 5px;
+}
+
+.fa-solid {
+  color: purple;
+}
+
+.fa-solid:hover {
+  color: rgb(157, 145, 72);
 }
 
