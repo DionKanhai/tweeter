@@ -19,11 +19,13 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
   </head>
 
   <body>
@@ -34,8 +36,8 @@
       <span style="float: right"> Write a new tweet</span>
     </nav>
     <!-- div with an image and name -->
-    <header class="aligner">
-        <div class="aligner-item"> 
+    <header class="aligner-and-background-style">
+        <div class="aligner-item">
           <img src="/images/profile-hex.png">
         </div>
         <br>
@@ -46,16 +48,32 @@
     
     <!-- Page-specific (main) content here -->
     <main class="container">
-     <section clas="new-tweet">
+     <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        <form action="/tweets" method="POST">
+        <form method="POST" action="/tweets/">
           <label for="tweet-text">What are you humming about?</label>
-          <textarea name="'text" id="tweet-text"></textarea>
-          <div>
-            <button type="submit">Tweet</button>
-            <output name="counter" for="tweet-text">140</output>
+          <textarea name="text" id="tweet-text"></textarea>
+          <div class="count-and-btn">
+            <button class="tweet-btn" type="submit">Tweet</button>
+            <output name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
+        <section class="new-tweets-created">
+          <article class="article-tweet">
+            <header class="username-and-icon">
+              <text>User Icon and Name</text>
+              <text>user@</text>
+            </header>
+            <text class="display-tweet">Area for the users tweets</text>
+            <footer class="date-stamp-and-flag">I am the footer
+              <span>
+                <i class="fa-solid fa-flag"></i>
+                <i class="fa-solid fa-retweet"></i>
+                <i class="fa-solid fa-heart"></i>
+              </span>
+            </footer>
+          </article>
+        </section>
      </section>
     </main>
   </body>
