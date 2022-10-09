@@ -5,32 +5,6 @@
  */
 
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd"
-    },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
-
 // this function takes an object as a tweet paramter and returns a tweet <article> element
 const createTweetElement = function (tweet) {
   let $tweet = $(`
@@ -43,7 +17,7 @@ const createTweetElement = function (tweet) {
       <text>${tweet.user.handle}</text>
     </header>
     <text class="display-tweet">${tweet.content.text}</text>
-    <footer class="date-stamp-and-flag">${tweet.created_at}
+    <footer class="date-stamp-and-flag">${timeago.format(tweet.created_at)}
       <span>
         <i class="fa-solid fa-flag"></i>
         <i class="fa-solid fa-retweet"></i>
@@ -55,7 +29,6 @@ const createTweetElement = function (tweet) {
   return $tweet;
 };
 
-// STEP 2
 
 // Function responsible for taking in an array of tweet objects 
 // and then appending each one to the #tweets-container
@@ -65,17 +38,59 @@ const renderTweets = function (tweets) {
     //calls createTweetElement on each tweet object
     const tweetObj = createTweetElement(tweet);
     //add the returned value to the end of the selected element using its ID
-    $('#tweets-container').append(tweetObj);
+    $('#tweets-container').prepend(tweetObj);
   });
 };
 
-//make sure page loads before content, then call function
+
+// allow document to load before content
 $(document).ready(function () {
-  renderTweets(data);
+
+  // search for tweet button that is linked to submit event
+  const formForTweet = $("#form-for-button");
+  // add an event listener to the form on submit
+  formForTweet.submit(function (event) {
+
+    //prevent the normal page refresh on submit behaviour
+    event.preventDefault();
+    // serialize the form data to query string 
+    const serializedData = $("#form-for-button").serialize();
+
+    // validation for user input
+    if (serializedData === "text=" || serializedData === "text= null") {
+      alert("Please enter a valid response");
+      return;
+    };
+    if (serializedData.length > 140) {
+      alert("Too many characters!");
+      return;
+    };
+
+    // pass the serialized data to the specific post route
+    // ajax post that sends the form data to the server
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:8080/tweets",
+      data: serializedData
+    });
+
+    //function that is responsible for fetching tweets
+    // from http://localhost:8080/tweets page
+    const loadTweets = function () {
+      $.ajax({
+        datatype: "json",
+        type: "GET",
+        url: "http://localhost:8080/tweets",
+        success: (data) => {
+          $("#tweet-text").val('');
+          // pass the JSON data (tweets) to renderTweets function
+          renderTweets(data)
+        }
+      });
+    }
+    loadTweets();
+  })
 });
-
-
-
 
 
 

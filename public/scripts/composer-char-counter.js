@@ -4,6 +4,7 @@ $(document).ready(function() {
   $("#tweet-text").on('input', function() {
     // counts the individual num of chars entered in textarea
     let charLength = $(this).val().length
+    
     // grab the counter using the textarea position in the DOM
   const counter = $(this).next().children()[1];
   //set value of counter
