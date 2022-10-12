@@ -1,5 +1,6 @@
 .tweet-btn {
-  background-color: #4056A1;;
+  background-color: #4056A1;
+  ;
   font-family: Bungee;
   color: white;
 }
@@ -38,7 +39,7 @@
 }
 
 .article-tweet:hover {
- box-shadow: 10px 10px 10px rgba(10, 10, 141, 0.5);
+  box-shadow: 10px 10px 10px rgba(10, 10, 141, 0.5);
 }
 
 .username-and-tweeterAt {
@@ -87,4 +88,3 @@
   color: #c33;
   border: solid red;
 }
-

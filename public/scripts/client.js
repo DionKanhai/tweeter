@@ -57,22 +57,22 @@ $(document).ready(function () {
   // search for tweet button that is linked to submit event
   const formForTweet = $("#form-for-button");
 
-    //function that is responsible for fetching tweets
-    // from http://localhost:8080/tweets page
-    const loadTweets = function () {
-      $.ajax({
-        datatype: "json",
-        type: "GET",
-        url: "http://localhost:8080/tweets",
-        success: (data) => {
-          $("#tweet-text").val('');
-          //reset the counter value to 140 after a tweet submission
-          $(".counter").val(140);
-          // pass the JSON data (tweets) to renderTweets function
-          renderTweets(data);
-        }
-      });
-    }
+  //function that is responsible for fetching tweets
+  // from http://localhost:8080/tweets page
+  const loadTweets = function () {
+    $.ajax({
+      datatype: "json",
+      type: "GET",
+      url: "http://localhost:8080/tweets",
+      success: (data) => {
+        $("#tweet-text").val('');
+        //reset the counter value to 140 after a tweet submission
+        $(".counter").val(140);
+        // pass the JSON data (tweets) to renderTweets function
+        renderTweets(data);
+      }
+    });
+  }
 
   // add an event listener to the form on submit
   formForTweet.submit(function (event) {
@@ -82,13 +82,13 @@ $(document).ready(function () {
     // serialize the form data to query string 
     const serializedData = $("#form-for-button").serialize();
     const textArea = $("#tweet-text").val();
-    
+
     // validation for user input
     if (textArea.length > 140 || textArea.length <= 0) {
       $(".error-message").slideDown(500);
       return;
     }
-      $(".error-message").slideUp(500);
+    $(".error-message").slideUp(500);
 
     // pass the serialized data to the specific post route
     // ajax post that sends the form data to the server
