@@ -4,10 +4,15 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+const escapeMalicious = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
 
 // this function takes an object as a tweet paramter and returns a tweet <article> element
 const createTweetElement = function (tweet) {
-  let $tweet = $(`
+  const $tweet = $(`
     <article class="article-tweet">
     <header class="username-and-tweeterAt">
       <span class="image-username">
@@ -16,7 +21,7 @@ const createTweetElement = function (tweet) {
       </span>
       <text>${tweet.user.handle}</text>
     </header>
-    <text class="display-tweet">${tweet.content.text}</text>
+    <text class="display-tweet">${escapeMalicious(tweet.content.text)}</text>
     <footer class="date-stamp-and-flag">${timeago.format(tweet.created_at)}
       <span>
         <i class="fa-solid fa-flag"></i>
@@ -48,31 +53,6 @@ $(document).ready(function () {
 
   // search for tweet button that is linked to submit event
   const formForTweet = $("#form-for-button");
-  // add an event listener to the form on submit
-  formForTweet.submit(function (event) {
-
-    //prevent the normal page refresh on submit behaviour
-    event.preventDefault();
-    // serialize the form data to query string 
-    const serializedData = $("#form-for-button").serialize();
-
-    // validation for user input
-    if (serializedData === "text=" || serializedData === "text= null") {
-      alert("Please enter a valid response");
-      return;
-    };
-    if (serializedData.length > 140) {
-      alert("Too many characters!");
-      return;
-    };
-
-    // pass the serialized data to the specific post route
-    // ajax post that sends the form data to the server
-    $.ajax({
-      type: "POST",
-      url: "http://localhost:8080/tweets",
-      data: serializedData
-    });
 
     //function that is responsible for fetching tweets
     // from http://localhost:8080/tweets page
@@ -83,13 +63,42 @@ $(document).ready(function () {
         url: "http://localhost:8080/tweets",
         success: (data) => {
           $("#tweet-text").val('');
+          $(".counter").val(140);
           // pass the JSON data (tweets) to renderTweets function
           renderTweets(data)
         }
       });
     }
-    loadTweets();
+
+  // add an event listener to the form on submit
+  formForTweet.submit(function (event) {
+
+    //prevent the normal page refresh on submit behaviour
+    event.preventDefault();
+    // serialize the form data to query string 
+    const serializedData = $("#form-for-button").serialize();
+    const textArea = $("#tweet-text").val();
+    
+    // validation for user input
+    if (textArea.length > 140 || textArea.length <= 0) {
+      $(".error-message").slideDown(500);
+      return;
+    }
+      $(".error-message").slideUp(500);
+
+    // pass the serialized data to the specific post route
+    // ajax post that sends the form data to the server
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:8080/tweets",
+      data: serializedData,
+      success: () => {
+        loadTweets()
+      }
+    });
   })
+  
+  loadTweets();
 });
 
 

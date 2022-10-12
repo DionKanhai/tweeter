@@ -30,6 +30,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"
     integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ 
 
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/client.js"></script>
@@ -59,7 +60,12 @@
   <main class="container">
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
-      <form id="form-for-button">
+      <div class="error-message" role="alert" aria-live="assertive">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Your tweet does not meet the minimum requirements, please try again!</span>
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <form id="form-for-button" class="message-for-user-errors" method="post" action="#" novalidate>
         <label for="tweet-text">What are you humming about?</label>
         <textarea name="text" id="tweet-text"></textarea>
         <div class="count-and-btn">
