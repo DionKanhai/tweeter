@@ -1,10 +1,14 @@
-/*
-* Tablets are commonly between 768px to 1024px.
-* A typical breakpoint to consider for desktop is 1024px and above
-* How could the flex-direction property be useful here
-* Consider what responsive design pattern the above desktop design might use. Perhaps Layout Shifter
-*/
+/*Phone styles*/
 
+@media only screen and (min-width: 420px) {
+  .nav-bar-media {
+    background-color: #0049a3;
+    background-image: url(https://www.transparenttextures.com/patterns/crissxcross.png);
+  }
+  .container {
+   margin-top: 50px;
+  }
+}
 
 /* Tablet styles */
 
@@ -14,7 +18,7 @@
     background-image: url(https://www.transparenttextures.com/patterns/crissxcross.png);
   }
   .container {
-   margin-top: 30px;
+   margin-top: 50px;
   }
 }
  
