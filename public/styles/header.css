@@ -1,6 +1,6 @@
 
 .aligner-and-background-style {
-  height: 660px;
+  height: 550px;
   width: 100%;
   background-color: #0049a3;
   background-image: url("https://www.transparenttextures.com/patterns/crissxcross.png");
@@ -9,8 +9,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 100px;
 }
 
-.aligner-item {
-  max-width: 50%;
-}
+

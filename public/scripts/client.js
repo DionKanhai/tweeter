@@ -4,6 +4,9 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
+/* purpose of this function is to prevent users from entering malicious javascript on webpage */
+// function that takes in a string as a parameter and returns a string
 const escapeMalicious = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
@@ -63,9 +66,10 @@ $(document).ready(function () {
         url: "http://localhost:8080/tweets",
         success: (data) => {
           $("#tweet-text").val('');
+          //reset the counter value to 140 after a tweet submission
           $(".counter").val(140);
           // pass the JSON data (tweets) to renderTweets function
-          renderTweets(data)
+          renderTweets(data);
         }
       });
     }
@@ -97,7 +101,6 @@ $(document).ready(function () {
       }
     });
   })
-  
   loadTweets();
 });
 
