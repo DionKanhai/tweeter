@@ -28,6 +28,9 @@
 
 /* below styles apply to new tweet boxes*/
 
+.new-tweet {
+  width: 90%;
+}
 
 .article-tweet {
   display: flex;
@@ -88,3 +91,4 @@
   color: #c33;
   border: solid red;
 }
+

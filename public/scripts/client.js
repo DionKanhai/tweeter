@@ -54,9 +54,6 @@ const renderTweets = function (tweets) {
 // allow document to load before content
 $(document).ready(function () {
 
-  // search for tweet button that is linked to submit event
-  const formForTweet = $("#form-for-button");
-
   //function that is responsible for fetching tweets
   // from http://localhost:8080/tweets page
   const loadTweets = function () {
@@ -76,6 +73,8 @@ $(document).ready(function () {
     });
   };
 
+  // search for tweet button that is linked to submit event
+  const formForTweet = $("#form-for-button");
   // add an event listener to the form on submit
   formForTweet.submit(function (event) {
 
@@ -83,7 +82,7 @@ $(document).ready(function () {
     event.preventDefault();
     // serialize the form data to query string
     const serializedData = $("#form-for-button").serialize();
-    
+
     const textArea = $("#tweet-text").val();
     // validation for user input
     if (textArea.length > 140 || textArea.length <= 0) {
