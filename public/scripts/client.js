@@ -68,21 +68,23 @@ $(document).ready(function () {
         $("#tweet-text").val('');
         //reset the counter value to 140 after a tweet submission
         $(".counter").val(140);
+        //empty any previous tweets in the tweets container before renderings the tweets
+        $("#tweets-container").empty();
         // pass the JSON data (tweets) to renderTweets function
         renderTweets(data);
       }
     });
-  }
+  };
 
   // add an event listener to the form on submit
   formForTweet.submit(function (event) {
 
     //prevent the normal page refresh on submit behaviour
     event.preventDefault();
-    // serialize the form data to query string 
+    // serialize the form data to query string
     const serializedData = $("#form-for-button").serialize();
+    
     const textArea = $("#tweet-text").val();
-
     // validation for user input
     if (textArea.length > 140 || textArea.length <= 0) {
       $(".error-message").slideDown(500);
